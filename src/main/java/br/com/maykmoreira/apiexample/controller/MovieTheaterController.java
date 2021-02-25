@@ -1,20 +1,16 @@
 package br.com.maykmoreira.apiexample.controller;
 
-import br.com.maykmoreira.apiexample.service.MovieTheaterService;
+import br.com.maykmoreira.apiexample.service.IMovieTheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-
-import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 public class MovieTheaterController {
 
-    private MovieTheaterService movieTheaterService;
+    private IMovieTheaterService movieTheaterService;
 
     @Autowired
-    public MovieTheaterController(MovieTheaterService movieTheaterService) {
+    public MovieTheaterController(IMovieTheaterService movieTheaterService) {
         this.movieTheaterService = movieTheaterService;
     }
 

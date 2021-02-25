@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
-public class BasicMovieServiceTest {
+public class BasicIMovieServiceTest {
 
     @Test
     public void getAllMovies()throws URISyntaxException {
