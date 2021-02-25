@@ -1,5 +1,6 @@
 package br.com.maykmoreira.apiexample.service;
 
+import br.com.maykmoreira.apiexample.customException.MovieNotFoundException;
 import br.com.maykmoreira.apiexample.model.Movie;
 import br.com.maykmoreira.apiexample.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,14 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public ResponseEntity<Movie> getMovieById(Long id){
+    public ResponseEntity<Movie> getMovieById(Long id) throws MovieNotFoundException {
         Optional<Movie> movie = movieRepository.findById(id);
 
         if(movie.isPresent())
             return new ResponseEntity<Movie>(movie.get(), HttpStatus.OK);
         else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new MovieNotFoundException("Could not find movie with ID " + id);
+
     }
 
     @Override
