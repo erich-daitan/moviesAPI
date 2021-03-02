@@ -1,39 +1,34 @@
 package br.com.maykmoreira.apiexample.model;
 
-import javax.persistence.*;
 /**
  * Movie is the main entity we'll be using to . . .
  *
  * @author Mayk Moreira
- *
  */
-@Entity
+
+import org.springframework.data.annotation.Id;
+
 public class Movie {
     @Id
-    @SequenceGenerator(name = "movie_sequence",sequenceName = "movie_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movie_sequence")
-    private long id;
+    private String id;
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
     private String genre;
 
     public Movie() {
     }
 
-    public Movie(long id, String title, String genre) {
-        this.id = id;
+    public Movie(String title, String genre) {
         this.title = title;
         this.genre = genre;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,7 +37,6 @@ public class Movie {
     }
 
     /**
-     *
      * @param title You can consider it as the name of the movie
      */
     public void setTitle(String title) {

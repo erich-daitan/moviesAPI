@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface IMovieTheaterService {
     public List<MovieTheater> getAllMovieTheaters();
-    public ResponseEntity<MovieTheater> getMovieTheaterById(Long id);
+
+    public ResponseEntity<MovieTheater> getMovieTheaterById(String id);
+
     public MovieTheater createMovieTheater(MovieTheater movieTheater);
-    public ResponseEntity<Object> deleteMovieTheater(Long id);
+
+    public ResponseEntity<Object> deleteMovieTheater(String id);
 }

@@ -1,29 +1,30 @@
 package br.com.maykmoreira.apiexample.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 public class MovieTheater {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private int rooms;
 
-    @OneToMany(cascade = CascadeType.ALL)
     private List<Movie> playing;
 
-    public Long getId() {
+    public MovieTheater() {
+        this.playing = new ArrayList<Movie>();
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,5 +50,15 @@ public class MovieTheater {
 
     public void setPlaying(List<Movie> playing) {
         this.playing = playing;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieTheater{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", rooms=" + rooms +
+                ", playing=" + playing +
+                '}';
     }
 }

@@ -21,33 +21,35 @@ public class MovieTheaterService implements IMovieTheaterService {
     }
 
     @Override
-    public List<MovieTheater> getAllMovieTheaters(){
+    public List<MovieTheater> getAllMovieTheaters() {
         return movieTheaterRepository.findAll();
     }
 
     @Override
-    public ResponseEntity<MovieTheater> getMovieTheaterById(Long id){
+    public ResponseEntity<MovieTheater> getMovieTheaterById(String id) {
         Optional<MovieTheater> movieTheater = movieTheaterRepository.findById(id);
 
-        if(movieTheater.isPresent())
+        if (movieTheater.isPresent()) {
             return new ResponseEntity<MovieTheater>(movieTheater.get(), HttpStatus.OK);
-        else
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @Override
-    public MovieTheater createMovieTheater(MovieTheater movieTheater){
+    public MovieTheater createMovieTheater(MovieTheater movieTheater) {
         return movieTheaterRepository.save(movieTheater);
     }
 
     @Override
-    public ResponseEntity<Object> deleteMovieTheater(Long id){
+    public ResponseEntity<Object> deleteMovieTheater(String id) {
         Optional<MovieTheater> movieTheater = movieTheaterRepository.findById(id);
-        if(movieTheater.isPresent()){
+        if (movieTheater.isPresent()) {
             movieTheaterRepository.delete(movieTheater.get());
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 }
